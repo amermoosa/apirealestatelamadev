@@ -10,9 +10,18 @@ import messageRoute from "./routes/message.route.js";
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(
+  cors({
+    origin: ["https://clientrealestatelamadev.vercel.app"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
+app.get("/test", (req, res) => {
+  res.status(200).send("hello welcome to musa realestatelamadev");
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
